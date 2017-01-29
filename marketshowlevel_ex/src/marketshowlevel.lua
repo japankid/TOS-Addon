@@ -6,10 +6,10 @@ local propAlign = "left";
 local equipRedgem = 0;
 
 -- Prop Text
-local AwakenText    = "覚醒"
-local SocketText    = "スロット"
-local PotentialText = "ポテンシャル"
-local UnknownText   = "未鑑定アイテム"
+local AwakenText    = "覺醒"
+local SocketText    = "洞數"
+local PotentialText = "潛力"
+local UnknownText   = "未鑑定道具"
 
 -- ヘアコスチュームのオプション、ポテンシャルの評価 (fn:GetItemValueSign)
 -- vcalc = 割合, sign = 表示記号, scolor = 色指定
@@ -27,39 +27,39 @@ local itemSign = {
 -- visible = 表示設定 1表示/2非表示　pNo = 並び替え（昇順）
 local propList = {};
 propList.MHP           = {name = "HP";  max = 2283; vcolor="FFD700"; visible=1; pNo =  5;};
-propList.RHP           = {name = "HPR"; max =   56; vcolor="FFD700"; visible=1; pNo = 15;};
+propList.RHP           = {name = "回血"; max =   56; vcolor="FFD700"; visible=1; pNo = 15;};
 propList.MSP           = {name = "SP";  max =  447; vcolor="6495ED"; visible=1; pNo = 16;};
-propList.RSP           = {name = "SPR ";max =   42; vcolor="6495ED"; visible=1; pNo =  6;};
+propList.RSP           = {name = "回魔 ";max =   42; vcolor="6495ED"; visible=1; pNo =  6;};
 propList.PATK          = {name = "物攻";max =  126; vcolor="FF6347"; visible=1; pNo =  7;};
 propList.ADD_MATK      = {name = "魔攻";max =  126; vcolor="DA70D6"; visible=1; pNo =  8;};
 propList.ADD_DEF       = {name = "物防";max =  110; vcolor="CD853F"; visible=1; pNo =  1;};
 propList.ADD_MDEF      = {name = "魔防";max =  110; vcolor="DDA0DD"; visible=1; pNo =  2;};
 propList.ADD_MHR       = {name = "魔増";max =  126; vcolor="DA70D6"; visible=1; pNo =  9;};
-propList.CRTATK        = {name = "ｸﾘ攻";max =  189; vcolor="98FB98"; visible=1; pNo = 10;};
-propList.CRTHR         = {name = "ｸﾘ発";max =   14; vcolor="98FB98"; visible=1; pNo = 11;};
-propList.CRTDR         = {name = "ｸﾘ抵";max =   14; vcolor="98FB98"; visible=1; pNo = 96;};
-propList.BLK           = {name = "ブロ";max =   14; vcolor="B0C4DE"; visible=1; pNo = 13;};
+propList.CRTATK        = {name = "暴攻";max =  189; vcolor="98FB98"; visible=1; pNo = 10;};
+propList.CRTHR         = {name = "暴擊";max =   14; vcolor="98FB98"; visible=1; pNo = 11;};
+propList.CRTDR         = {name = "暴抗";max =   14; vcolor="98FB98"; visible=1; pNo = 96;};
+propList.BLK           = {name = "格檔";max =   14; vcolor="B0C4DE"; visible=1; pNo = 13;};
 propList.ADD_HR        = {name = "命中";max =   14; vcolor="B0C4DE"; visible=1; pNo = 97;};
 propList.ADD_DR        = {name = "回避";max =   14; vcolor="B0C4DE"; visible=1; pNo = 98;};
-propList.ADD_FIRE      = {name = "炎攻";max =   99; vcolor="FED0E0"; visible=1; pNo = 26;};
-propList.ADD_ICE       = {name = "氷攻";max =   99; vcolor="FED0E0"; visible=1; pNo = 27;};
+propList.ADD_FIRE      = {name = "火攻";max =   99; vcolor="FED0E0"; visible=1; pNo = 26;};
+propList.ADD_ICE       = {name = "冰攻";max =   99; vcolor="FED0E0"; visible=1; pNo = 27;};
 propList.ADD_POISON    = {name = "毒攻";max =   99; vcolor="FED0E0"; visible=1; pNo = 28;};
 propList.ADD_LIGHTNING = {name = "雷攻";max =   99; vcolor="FED0E0"; visible=1; pNo = 29;};
-propList.ADD_EARTH     = {name = "土攻";max =   99; vcolor="FED0E0"; visible=1; pNo = 30;};
+propList.ADD_EARTH     = {name = "地攻";max =   99; vcolor="FED0E0"; visible=1; pNo = 30;};
 propList.ADD_SOUL      = {name = "念攻";max =   99; vcolor="FED0E0"; visible=1; pNo = 31;};
 propList.ADD_HOLY      = {name = "聖攻";max =   99; vcolor="FED0E0"; visible=1; pNo = 32;};
 propList.ADD_DARK      = {name = "闇攻";max =   99; vcolor="FED0E0"; visible=1; pNo = 33;};
-propList.RES_FIRE      = {name = "炎防";max =   84; vcolor="BDB76B"; visible=1; pNo = 18;};
-propList.RES_ICE       = {name = "氷防";max =   84; vcolor="BDB76B"; visible=1; pNo = 19;};
+propList.RES_FIRE      = {name = "火防";max =   84; vcolor="BDB76B"; visible=1; pNo = 18;};
+propList.RES_ICE       = {name = "冰防";max =   84; vcolor="BDB76B"; visible=1; pNo = 19;};
 propList.RES_POISON    = {name = "毒防";max =   84; vcolor="BDB76B"; visible=1; pNo = 20;};
 propList.RES_LIGHTNING = {name = "雷防";max =   84; vcolor="BDB76B"; visible=1; pNo = 21;};
-propList.RES_EARTH     = {name = "土防";max =   84; vcolor="BDB76B"; visible=1; pNo = 22;};
+propList.RES_EARTH     = {name = "地防";max =   84; vcolor="BDB76B"; visible=1; pNo = 22;};
 propList.RES_SOUL      = {name = "念防";max =   84; vcolor="BDB76B"; visible=1; pNo = 23;};
 propList.RES_HOLY      = {name = "聖防";max =   84; vcolor="BDB76B"; visible=1; pNo = 24;};
 propList.RES_DARK      = {name = "闇防";max =   84; vcolor="BDB76B"; visible=1; pNo = 25;};
 propList.MSPD          = {name = "移動";max =    1; vcolor="FFFFFF"; visible=1; pNo =  4;};
-propList.SR            = {name = "広攻";max =    1; vcolor="FFFFFF"; visible=1; pNo =  3;};
-propList.SDR           = {name = "広防";max =    4; vcolor="FFFFFF"; visible=1; pNo = 99;};
+propList.SR            = {name = "廣攻";max =    1; vcolor="FFFFFF"; visible=1; pNo =  3;};
+propList.SDR           = {name = "廣防";max =    4; vcolor="FFFFFF"; visible=1; pNo = 99;};
 
 --Equip setting(item.equip.ies)
 local transStr = {
@@ -76,16 +76,16 @@ local transStr = {
 --<ジェムテーブル見つけたら廃止>
 local gemRed = {
 [0] = {wep = ""; gvalue = 0;};
-[1] = {wep = "最攻 40 / 物攻 25 / HP 30 / HPR 10 / ｸﾘ攻 5"; gvalue = 40;};
-[2] = {wep = "最攻 60 / 物攻 35 / HP 48 / HPR 20 / ｸﾘ攻 8"; gvalue = 60;};
-[3] = {wep = "最攻 90 / 物攻 55 / HP 72 / HPR 30 / ｸﾘ攻11"; gvalue = 90;};
-[4] = {wep = "最攻130 / 物攻 80 / HP102 / HPR 40 / ｸﾘ攻16"; gvalue = 130;};
-[5] = {wep = "最攻180 / 物攻110 / HP138 / HPR 50 / ｸﾘ攻23"; gvalue = 180;};
-[6] = {wep = "最攻240 / 物攻145 / HP180 / HPR 60 / ｸﾘ攻30"; gvalue = 240;};
-[7] = {wep = "最攻310 / 物攻185 / HP228 / HPR 70 / ｸﾘ攻39"; gvalue = 320;};
-[8] = {wep = "最攻390 / 物攻235 / HP282 / HPR 80 / ｸﾘ攻49"; gvalue = 390;};
-[9] = {wep = "最攻480 / 物攻290 / HP342 / HPR 90 / ｸﾘ攻60"; gvalue = 480;};
-[10] ={wep = "最攻580 / 物攻350 / HP408 / HPR100 / ｸﾘ攻73"; gvalue = 580;};
+[1] = {wep = "最攻 40 / 物攻 25 / HP 30 / 回血 10 / 暴攻 5"; gvalue = 40;};
+[2] = {wep = "最攻 60 / 物攻 35 / HP 48 / 回血 20 / 暴攻 8"; gvalue = 60;};
+[3] = {wep = "最攻 90 / 物攻 55 / HP 72 / 回血 30 / 暴攻11"; gvalue = 90;};
+[4] = {wep = "最攻130 / 物攻 80 / HP102 / 回血 40 / 暴攻16"; gvalue = 130;};
+[5] = {wep = "最攻180 / 物攻110 / HP138 / 回血 50 / 暴攻23"; gvalue = 180;};
+[6] = {wep = "最攻240 / 物攻145 / HP180 / 回血 60 / 暴攻30"; gvalue = 240;};
+[7] = {wep = "最攻310 / 物攻185 / HP228 / 回血 70 / 暴攻39"; gvalue = 320;};
+[8] = {wep = "最攻390 / 物攻235 / HP282 / 回血 80 / 暴攻49"; gvalue = 390;};
+[9] = {wep = "最攻480 / 物攻290 / HP342 / 回血 90 / 暴攻60"; gvalue = 480;};
+[10] ={wep = "最攻580 / 物攻350 / HP408 / 回血100 / 暴攻73"; gvalue = 580;};
 [11] ={wep = "None";};
 };
 local gemBlue = {
@@ -102,29 +102,29 @@ local gemBlue = {
 [11] ={wep = "None";};
 };
 local gemGreen = {
-[1] = {wep = "ｸﾘ発  2 / ｸﾘ発  3 / ｸﾘ抵 1 / 回避 2 / 命中2";};
-[2] = {wep = "ｸﾘ発  4 / ｸﾘ発  5 / ｸﾘ抵 3 / 回避 4 / 命中4";};
-[3] = {wep = "ｸﾘ発  9 / ｸﾘ発 10 / ｸﾘ抵 5 / 回避 6 / 命中8";};
-[4] = {wep = "ｸﾘ発 16 / ｸﾘ発 18 / ｸﾘ抵 9 / 回避10 / 命中14";};
-[5] = {wep = "ｸﾘ発 26 / ｸﾘ発 29 / ｸﾘ抵15 / 回避17 / 命中22";};
-[6] = {wep = "ｸﾘ発 38 / ｸﾘ発 42 / ｸﾘ抵21 / 回避24 / 命中32";};
-[7] = {wep = "ｸﾘ発 52 / ｸﾘ発 57 / ｸﾘ抵29 / 回避32 / 命中44";};
-[8] = {wep = "ｸﾘ発 69 / ｸﾘ発 75 / ｸﾘ抵38 / 回避42 / 命中58";};
-[9] = {wep = "ｸﾘ発 88 / ｸﾘ発 96 / ｸﾘ抵49 / 回避54 / 命中74";};
-[10] ={wep = "ｸﾘ発110 / ｸﾘ発120 / ｸﾘ抵61 / 回避68 / 命中92";};
+[1] = {wep = "暴擊  2 / 暴擊  3 / 暴抗 1 / 回避 2 / 命中2";};
+[2] = {wep = "暴擊  4 / 暴擊  5 / 暴抗 3 / 回避 4 / 命中4";};
+[3] = {wep = "暴擊  9 / 暴擊 10 / 暴抗 5 / 回避 6 / 命中8";};
+[4] = {wep = "暴擊 16 / 暴擊 18 / 暴抗 9 / 回避10 / 命中14";};
+[5] = {wep = "暴擊 26 / 暴擊 29 / 暴抗15 / 回避17 / 命中22";};
+[6] = {wep = "暴擊 38 / 暴擊 42 / 暴抗21 / 回避24 / 命中32";};
+[7] = {wep = "暴擊 52 / 暴擊 57 / 暴抗29 / 回避32 / 命中44";};
+[8] = {wep = "暴擊 69 / 暴擊 75 / 暴抗38 / 回避42 / 命中58";};
+[9] = {wep = "暴擊 88 / 暴擊 96 / 暴抗49 / 回避54 / 命中74";};
+[10] ={wep = "暴擊110 / 暴擊120 / 暴抗61 / 回避68 / 命中92";};
 [11] ={wep = "None";};
 };
 local gemYellow = {
-[1] = {wep = "ｸﾘ攻 60 / ｸﾘ攻 35 / 物防 10 / HP  45 / 貫通  1";};
-[2] = {wep = "ｸﾘ攻 90 / ｸﾘ攻 45 / 物防 20 / HP 120 / 貫通  4";};
-[3] = {wep = "ｸﾘ攻140 / ｸﾘ攻 75 / 物防 30 / HP 225 / 貫通 10";};
-[4] = {wep = "ｸﾘ攻200 / ｸﾘ攻105 / 物防 40 / HP 360 / 貫通 19";};
-[5] = {wep = "ｸﾘ攻270 / ｸﾘ攻145 / 物防 50 / HP 525 / 貫通 30";};
-[6] = {wep = "ｸﾘ攻360 / ｸﾘ攻195 / 物防 60 / HP 720 / 貫通 44";};
-[7] = {wep = "ｸﾘ攻470 / ｸﾘ攻245 / 物防 70 / HP 945 / 貫通 60";};
-[8] = {wep = "ｸﾘ攻590 / ｸﾘ攻315 / 物防 80 / HP1200 / 貫通 79";};
-[9] = {wep = "ｸﾘ攻720 / ｸﾘ攻385 / 物防 90 / HP1485 / 貫通100";};
-[10] ={wep = "ｸﾘ攻870 / ｸﾘ攻465 / 物防100 / HP1800 / 貫通124";};
+[1] = {wep = "暴攻 60 / 暴攻 35 / 物防 10 / HP  45 / 貫通  1";};
+[2] = {wep = "暴攻 90 / 暴攻 45 / 物防 20 / HP 120 / 貫通  4";};
+[3] = {wep = "暴攻140 / 暴攻 75 / 物防 30 / HP 225 / 貫通 10";};
+[4] = {wep = "暴攻200 / 暴攻105 / 物防 40 / HP 360 / 貫通 19";};
+[5] = {wep = "暴攻270 / 暴攻145 / 物防 50 / HP 525 / 貫通 30";};
+[6] = {wep = "暴攻360 / 暴攻195 / 物防 60 / HP 720 / 貫通 44";};
+[7] = {wep = "暴攻470 / 暴攻245 / 物防 70 / HP 945 / 貫通 60";};
+[8] = {wep = "暴攻590 / 暴攻315 / 物防 80 / HP1200 / 貫通 79";};
+[9] = {wep = "暴攻720 / 暴攻385 / 物防 90 / HP1485 / 貫通100";};
+[10] ={wep = "暴攻870 / 暴攻465 / 物防100 / HP1800 / 貫通124";};
 [11] ={wep = "None";};
 };
 local gemExp = {
@@ -325,7 +325,7 @@ local tblAct = {
 
         if elMax >= 1 then
             local propSign = GetItemValueSign(elAtks, elMax, 0);
-            elAtks = "{#FED0E0}{ol}" .. "" .. "(属攻" .. elAtks .. "/" .. elMax .. propSign .. "){/}{/}";
+            elAtks = "{#FED0E0}{ol}" .. "" .. "(屬攻" .. elAtks .. "/" .. elMax .. propSign .. "){/}{/}";
         end
     else
         elAtks = "";
@@ -374,9 +374,9 @@ function GET_SOCKET_POTENSIAL_AWAKEN_PROP(ctrlSet, itemObj, row)
     --<表示方法わかるまで仮>
     local equipMaterial = itemObj["Material"];
     if #equipMaterial ~= 0 then
-        equipMaterial = string.gsub(equipMaterial,"Iron"   ,"プレート：");
-        equipMaterial = string.gsub(equipMaterial,"Leather","レザー　：");
-        equipMaterial = string.gsub(equipMaterial,"Cloth"  ,"クロース：");
+        equipMaterial = string.gsub(equipMaterial,"Iron"   ,"板金：");
+        equipMaterial = string.gsub(equipMaterial,"Leather","皮革：");
+        equipMaterial = string.gsub(equipMaterial,"Cloth"  ,"布：");
         equipMaterial = string.gsub(equipMaterial,"None"   ,"");        
     end
 
@@ -543,9 +543,9 @@ local addTooltiphelper = pcall(COLLECTION_ADD_CUSTOM_TOOLTIP_TEXT,"640001");
             end
             if #gemParts >= 1 then
                 gemParts = string.gsub(gemParts,"Weapon","武器");
-                gemParts = string.gsub(gemParts,"Foot","足");
+                gemParts = string.gsub(gemParts,"Foot","鞋");
                 gemParts = string.gsub(gemParts,"Hand","手");
-                gemParts = string.gsub(gemParts,"TopLeg","体");
+                gemParts = string.gsub(gemParts,"TopLeg","體");
             end
             --<ジェムテーブル見つけるまで仮>
             if itemObj["EquipXpGroup"] == "Gem" then
@@ -569,13 +569,13 @@ local addTooltiphelper = pcall(COLLECTION_ADD_CUSTOM_TOOLTIP_TEXT,"640001");
                 --<表示方法見つけるまで仮>
                 gemSkill = string.gsub(gemSkill,"最","　");
                 gemSkill = string.gsub(gemSkill,"物","　");
-                gemSkill = string.gsub(gemSkill,"発","　");
-                gemSkill = string.gsub(gemSkill,"抵","　");
+                gemSkill = string.gsub(gemSkill,"發","　");
+                gemSkill = string.gsub(gemSkill,"抗","　");
                 gemSkill = string.gsub(gemSkill,"魔","　");
                 gemSkill = string.gsub(gemSkill,"攻","　");
                 gemSkill = string.gsub(gemSkill,"防","　");
-                gemSkill = string.gsub(gemSkill,"ｸﾘ","  ");
-                gemSkill = string.gsub(gemSkill,"ﾌﾞﾛｯｸ","　 　");
+                gemSkill = string.gsub(gemSkill,"暴","  ");
+                gemSkill = string.gsub(gemSkill,"格","　 　");
                 gemSkill = string.gsub(gemSkill,"HP","  ");
                 gemSkill = string.gsub(gemSkill,"SP","  ");
                 gemSkill = string.gsub(gemSkill,"R"," ");
